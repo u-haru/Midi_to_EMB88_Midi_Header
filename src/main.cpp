@@ -106,26 +106,8 @@ int main(int argc, char *argv[])
                     return 0;
                 }
 
-                char doremi[] = {'C','C','D','D','E','F','F','G','G','A','A','B'};
-                switch(buf[2]%12){
-                    case 0:
-                    case 2:
-                    case 4:
-                    case 5:
-                    case 7:
-                    case 9:
-                    case 11:
-                        sprintf((char*)Notes[track][nc[track]].code,"%c%.1d%c",doremi[buf[2]%12],((buf[2]+3)/12)-1,0);
-                        break;
-                    default:
-                    case 1:
-                    case 3:
-                    case 6:
-                    case 8:
-                    case 10:
-                        sprintf((char*)Notes[track][nc[track]].code,"%c%.1d%c",doremi[buf[2]%12],((buf[2]+3)/12)-1,'S');
-                        break;
-                }
+                char doremi[][2] = {{'C'},{'C','S'},{'D'},{'D','S'},{'E'},{'F'},{'F','S'},{'G'},{'G','S'},{'A'},{'A','S'},{'B'}};
+                sprintf((char*)Notes[track][nc[track]].code,"%c%.1d%c",doremi[buf[2]%12][0],((buf[2]+3)/12)-1,doremi[buf[2]%12][1]);
             }
             if(buf[1]>>4==8){
                 Notes[track][nc[track]].lenth=variablelenbuf[track];
