@@ -105,20 +105,8 @@ int main(int argc, char *argv[])
                     printf("Error:duplicate detected\nCh:%d\nNum:%d\nCode:%s",track+1,nc[track],Notes[track][nc[track]].code);
                     return 0;
                 }
-                char buffer;
 
-                if(buf[2]%12==0) buffer='C';
-                else if(buf[2]%12==1)buffer='C';
-                else if(buf[2]%12==2)buffer='D';
-                else if(buf[2]%12==3)buffer='D';
-                else if(buf[2]%12==4)buffer='E';
-                else if(buf[2]%12==5)buffer='F';
-                else if(buf[2]%12==6)buffer='F';
-                else if(buf[2]%12==7)buffer='G';
-                else if(buf[2]%12==8)buffer='G';
-                else if(buf[2]%12==9)buffer='A';
-                else if(buf[2]%12==10)buffer='A';
-                else if(buf[2]%12==11)buffer='B';
+                char doremi[] = {'C','C','D','D','E','F','F','G','G','A','A','B'};
                 switch(buf[2]%12){
                     case 0:
                     case 2:
@@ -127,7 +115,7 @@ int main(int argc, char *argv[])
                     case 7:
                     case 9:
                     case 11:
-                        sprintf((char*)Notes[track][nc[track]].code,"%c%.1d%c",buffer,((buf[2]+3)/12)-1,0);
+                        sprintf((char*)Notes[track][nc[track]].code,"%c%.1d%c",doremi[buf[2]%12],((buf[2]+3)/12)-1,0);
                         break;
                     default:
                     case 1:
@@ -135,7 +123,7 @@ int main(int argc, char *argv[])
                     case 6:
                     case 8:
                     case 10:
-                        sprintf((char*)Notes[track][nc[track]].code,"%c%.1d%c",buffer,((buf[2]+3)/12)-1,'S');
+                        sprintf((char*)Notes[track][nc[track]].code,"%c%.1d%c",doremi[buf[2]%12],((buf[2]+3)/12)-1,'S');
                         break;
                 }
             }
