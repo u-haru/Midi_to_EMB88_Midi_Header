@@ -107,7 +107,7 @@ int main(int argc, char *argv[])
                 }
 
                 char doremi[][2] = {{'C'},{'C','S'},{'D'},{'D','S'},{'E'},{'F'},{'F','S'},{'G'},{'G','S'},{'A'},{'A','S'},{'B'}};
-                sprintf((char*)Notes[track][nc[track]].code,"%c%.1d%c",doremi[buf[2]%12][0],((buf[2]+3)/12)-1,doremi[buf[2]%12][1]);
+                sprintf((char*)Notes[track][nc[track]].code,"%c%.1d%c",doremi[buf[2]%12][0],(buf[2]/12)-1,doremi[buf[2]%12][1]);
             }
             if(buf[1]>>4==8){
                 Notes[track][nc[track]].lenth=variablelenbuf[track];
